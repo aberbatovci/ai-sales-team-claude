@@ -6,10 +6,16 @@ Das Motiv ist eine alte Porzellan-Schraubsicherung unter einer Museums-Glasglock
 
 | Datei | Zweck |
 | --- | --- |
-| `teshge-creative-museum-9x16.png` | 1080 × 1920, für Meta/TikTok-Upload |
-| `teshge-creative-museum-9x16@2x.png` | 2160 × 3840, Master für Print und Nachbearbeitung |
+| `teshge-creative-museum-nbp-9x16.png` | Finale Version (Nano Banana Pro, fotorealistisch), 1080 × 1920 für den Upload |
+| `teshge-creative-museum-nbp-9x16@2x.jpg` | Finale Version, 2160 × 3840 |
+| `teshge-creative-museum-9x16.png` | Vektor-Version (Layout-Vorlage), 1080 × 1920 |
+| `teshge-creative-museum-9x16@2x.png` | Vektor-Version, 2160 × 3840 |
 | `source/museum.html` | Vektor-Quelle (SVG + HTML), komplett editierbar |
 | `source/render.js` | Export per Playwright |
+
+## Nano-Banana-Pro-Version
+
+Die Vektor-Version diente als Layout-Referenz, dazu kam das Original-Logo als zweite Referenz. Modell: Google Nano Banana Pro (Image-to-Image, 4K, 9:16) über Artlist. Das Original liegt in der Artlist-Bibliothek (3072 × 5504, PNG) und wurde für die Exporte auf exakt 9:16 beschnitten (15 px bzw. 30 px Höhe).
 
 ## Copy
 
