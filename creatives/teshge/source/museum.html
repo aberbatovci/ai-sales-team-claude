@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>TESHGE Museum Creative</title>
+<style>
+  @font-face { font-family: "Outfit"; font-weight: 400; src: url("outfit-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Outfit"; font-weight: 500; src: url("outfit-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Outfit"; font-weight: 600; src: url("outfit-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Outfit"; font-weight: 700; src: url("outfit-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Outfit"; font-weight: 800; src: url("outfit-latin-800-normal.woff2") format("woff2"); }
+
+  :root {
+    --blue: #0f3485;
+    --gold: #edad24;
+    --black: #040404;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; background: #050b1c; overflow: hidden; }
+  body { font-family: "Outfit", sans-serif; color: var(--white); -webkit-font-smoothing: antialiased; }
+
+  .frame { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+  .scene, .grain { position: absolute; inset: 0; }
+  .grain { mix-blend-mode: overlay; opacity: .55; pointer-events: none; }
+
+  /* Kopfzeile */
+  .top { position: absolute; left: 88px; right: 88px; top: 262px; display: flex; align-items: center; justify-content: space-between; }
+  .top img { height: 38px; width: auto; display: block; }
+  .top .meta { font-size: 19px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+
+  .headline { position: absolute; left: 82px; top: 336px; font-weight: 800; font-size: 150px; line-height: .93; letter-spacing: -.035em; }
+  .headline .dot { color: var(--gold); }
+  .sub { position: absolute; left: 88px; top: 628px; font-weight: 500; font-size: 44px; letter-spacing: -.01em; color: rgba(255,255,255,.72); }
+
+  /* Museumsschild auf dem Sockel */
+  .label { position: absolute; left: 290px; width: 500px; top: 1476px; }
+  .row { margin-top: 26px; display: flex; align-items: center; justify-content: space-between; }
+  .row .link { font-size: 18px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .proof { position: absolute; left: 0; right: 0; top: 1806px; display: flex; justify-content: center; align-items: center; gap: 14px; font-size: 19px; font-weight: 500; letter-spacing: .02em; color: rgba(255,255,255,.6); }
+  .proof .stars { display: flex; gap: 3px; }
+  .proof .stars svg { width: 19px; height: 19px; }
+  .proof b { color: #fff; font-weight: 700; }
+  .label .inv { display: flex; gap: 12px; align-items: center; white-space: nowrap; font-size: 16px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+  .label .inv i { display: block; width: 22px; height: 1.5px; background: var(--gold); opacity: .8; }
+  .label h2 { margin-top: 16px; font-size: 38px; font-weight: 700; letter-spacing: -.015em; line-height: 1.08; }
+  .label p { margin-top: 12px; font-size: 21px; font-weight: 400; line-height: 1.42; color: rgba(255,255,255,.74); }
+  .cta { display: inline-flex; align-items: center; gap: 16px; height: 70px; padding: 0 30px 0 34px; border-radius: 14.4px; background: var(--gold); color: var(--black); font-size: 25px; font-weight: 700; letter-spacing: -.005em; box-shadow: 0 10px 30px rgba(0,0,0,.28); }
+  .cta svg { width: 26px; height: 26px; }
+  .url { position: absolute; left: 0; right: 0; top: 1812px; text-align: center; font-size: 19px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.42); }
+</style>
+</head>
+<body>
+<div class="frame">
+
+<svg class="scene" id="scene" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Wand -->
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#040815"/>
+      <stop offset=".55" stop-color="#071230"/>
+      <stop offset="1" stop-color="#040a1c"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="540" cy="1040" r="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1b3f94" stop-opacity=".55"/>
+      <stop offset=".55" stop-color="#0f2a6b" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0f2a6b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff0d2" stop-opacity=".13"/>
+      <stop offset=".6" stop-color="#ffe7bd" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#ffe7bd" stop-opacity=".025"/>
+    </linearGradient>
+    <filter id="blur40" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40"/></filter>
+    <filter id="blur14" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="blurRib" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.1"/></filter>
+    <filter id="blur1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation=".8"/></filter>
+
+    <!-- Sockel -->
+    <linearGradient id="plinthTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b58b6"/>
+      <stop offset="1" stop-color="#1b459e"/>
+    </linearGradient>
+    <linearGradient id="plinthFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15408f"/>
+      <stop offset=".35" stop-color="#0f3485"/>
+      <stop offset="1" stop-color="#081d52"/>
+    </linearGradient>
+    <linearGradient id="plinthSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".38"/>
+      <stop offset=".18" stop-color="#000" stop-opacity="0"/>
+      <stop offset=".82" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".42"/>
+    </linearGradient>
+    <radialGradient id="pool" cx="540" cy="1335" r="330" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 934.5) scale(1 .3)">
+      <stop offset="0" stop-color="#cfdcff" stop-opacity=".5"/>
+      <stop offset=".6" stop-color="#9fb8ff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#9fb8ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Holz-/Lacksockel der Glocke -->
+    <linearGradient id="baseSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#020203"/>
+      <stop offset=".35" stop-color="#15171c"/>
+      <stop offset=".5" stop-color="#23262d"/>
+      <stop offset=".7" stop-color="#101216"/>
+      <stop offset="1" stop-color="#020203"/>
+    </linearGradient>
+    <radialGradient id="baseTop" cx="540" cy="1300" r="230" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 910) scale(1 .3)">
+      <stop offset="0" stop-color="#2a2e37"/>
+      <stop offset=".7" stop-color="#15171c"/>
+      <stop offset="1" stop-color="#0a0b0e"/>
+    </radialGradient>
+
+    <!-- Porzellan -->
+    <linearGradient id="porcelain" x1="458" y1="0" x2="622" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6a655b"/>
+      <stop offset=".1" stop-color="#b3ac9c"/>
+      <stop offset=".27" stop-color="#efebe0"/>
+      <stop offset=".4" stop-color="#fdfbf5"/>
+      <stop offset=".52" stop-color="#f2eee4"/>
+      <stop offset=".76" stop-color="#bbb4a5"/>
+      <stop offset=".92" stop-color="#7b7569"/>
+      <stop offset="1" stop-color="#57524a"/>
+    </linearGradient>
+    <radialGradient id="porcelainTop" cx="520" cy="1005" r="95" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 703.5) scale(1 .3)">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset=".75" stop-color="#ebe4d4"/>
+      <stop offset="1" stop-color="#c4bcab"/>
+    </radialGradient>
+    <linearGradient id="age" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a5a20" stop-opacity="0"/>
+      <stop offset=".7" stop-color="#7a5a20" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#5a3f12" stop-opacity=".22"/>
+    </linearGradient>
+
+    <!-- Metallgewinde -->
+    <linearGradient id="metal" x1="485" y1="0" x2="595" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2f2a22"/>
+      <stop offset=".18" stop-color="#8a7d62"/>
+      <stop offset=".36" stop-color="#e2d6b8"/>
+      <stop offset=".48" stop-color="#c4b594"/>
+      <stop offset=".72" stop-color="#6e634f"/>
+      <stop offset="1" stop-color="#26221b"/>
+    </linearGradient>
+    <linearGradient id="nub" x1="523" y1="0" x2="557" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a3a3a"/>
+      <stop offset=".4" stop-color="#d8d8d8"/>
+      <stop offset="1" stop-color="#3a3a3a"/>
+    </linearGradient>
+    <linearGradient id="riser" x1="490" y1="0" x2="590" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#050506"/>
+      <stop offset=".4" stop-color="#202329"/>
+      <stop offset="1" stop-color="#050506"/>
+    </linearGradient>
+
+    <!-- Kennmelder -->
+    <radialGradient id="indicator" cx="536" cy="1008" r="20" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 705.6) scale(1 .3)">
+      <stop offset="0" stop-color="#ffd772"/>
+      <stop offset=".6" stop-color="#edad24"/>
+      <stop offset="1" stop-color="#9a6a0c"/>
+    </radialGradient>
+
+    <!-- Glas -->
+    <linearGradient id="glass" x1="345" y1="0" x2="735" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".2"/>
+      <stop offset=".05" stop-color="#fff" stop-opacity=".07"/>
+      <stop offset=".18" stop-color="#fff" stop-opacity=".015"/>
+      <stop offset=".82" stop-color="#fff" stop-opacity=".015"/>
+      <stop offset=".95" stop-color="#fff" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="glassV" x1="0" y1="760" x2="0" y2="1330" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".06"/>
+      <stop offset=".3" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#9fb8ff" stop-opacity=".05"/>
+    </linearGradient>
+    <linearGradient id="streak" x1="0" y1="930" x2="0" y2="1300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".15" stop-color="#fff" stop-opacity=".75"/>
+      <stop offset=".7" stop-color="#fff" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="knob" cx="533" cy="752" r="24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".25" stop-color="#dfe8ff" stop-opacity=".35"/>
+      <stop offset=".8" stop-color="#9fb8ff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".45"/>
+    </radialGradient>
+
+    <!-- Vignette -->
+    <radialGradient id="vignette" cx="540" cy="1000" r="1150" gradientUnits="userSpaceOnUse">
+      <stop offset=".45" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+    </radialGradient>
+
+    <clipPath id="bodyClip"><path d="M 458 1005 L 458 1180 A 82 24.6 0 0 0 622 1180 L 622 1005 Z"/></clipPath>
+    <path id="bandArc" d="M 470 1159 A 82 24.6 0 0 0 610 1159" fill="none"/>
+  </defs>
+
+  <!-- Raum -->
+  <rect width="1080" height="1920" fill="url(#wall)"/>
+  <rect width="1080" height="1920" fill="url(#halo)"/>
+  <polygon points="490,-60 590,-60 900,1330 180,1330" fill="url(#beam)" filter="url(#blur40)"/>
+
+  <!-- Sockel -->
+  <g id="plinth">
+    <polygon points="262,1250 818,1250 848,1428 232,1428" fill="url(#plinthTop)"/>
+    <polygon points="262,1250 818,1250 848,1428 232,1428" fill="url(#plinthSide)" opacity=".6"/>
+    <ellipse cx="540" cy="1335" rx="330" ry="99" fill="url(#pool)"/>
+    <rect x="232" y="1428" width="616" height="520" fill="url(#plinthFront)"/>
+    <rect x="232" y="1428" width="616" height="520" fill="url(#plinthSide)"/>
+    <line x1="232" y1="1428.5" x2="848" y2="1428.5" stroke="#8fb0ff" stroke-opacity=".55" stroke-width="1.5"/>
+    <rect x="232" y="1430" width="616" height="40" fill="#000" opacity=".12" filter="url(#blur6)"/>
+  </g>
+
+  <!-- Glockensockel -->
+  <g id="base">
+    <ellipse cx="540" cy="1360" rx="238" ry="52" fill="#000" opacity=".55" filter="url(#blur14)"/>
+    <path d="M 325 1318 L 325 1346 A 215 64 0 0 0 755 1346 L 755 1318 Z" fill="url(#baseSide)"/>
+    <ellipse cx="540" cy="1318" rx="215" ry="64" fill="url(#baseTop)"/>
+    <path d="M 325 1318 A 215 64 0 0 0 755 1318" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.4"/>
+    <ellipse cx="540" cy="1318" rx="199" ry="59" fill="none" stroke="#000" stroke-opacity=".7" stroke-width="3"/>
+  </g>
+
+  <!-- Glocke, Rückseite -->
+  <path d="M 345 1318 A 195 58 0 0 1 735 1318" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="1.5"/>
+  <path d="M 700 950 L 700 1290" stroke="#fff" stroke-opacity=".05" stroke-width="10" filter="url(#blur6)"/>
+
+  <!-- Exponat: Schraubsicherung -->
+  <g id="fuse" transform="translate(540 1318) scale(1.12) translate(-540 -1318)">
+    <ellipse cx="540" cy="1322" rx="92" ry="22" fill="#000" opacity=".6" filter="url(#blur6)"/>
+    <!-- Halter -->
+    <path d="M 492 1275 L 492 1318 A 48 14.4 0 0 0 588 1318 L 588 1275 Z" fill="url(#riser)"/>
+    <ellipse cx="540" cy="1275" rx="48" ry="14.4" fill="#1d2027"/>
+    <ellipse cx="540" cy="1275" rx="48" ry="14.4" fill="none" stroke="#fff" stroke-opacity=".12"/>
+    <!-- Fusskontakt -->
+    <path d="M 523 1257 L 523 1275 A 17 5 0 0 0 557 1275 L 557 1257 Z" fill="url(#nub)"/>
+    <!-- Gewinde -->
+    <path d="M 485 1180 L 485 1257 A 55 16.5 0 0 0 595 1257 L 595 1180 Z" fill="url(#metal)"/>
+    <g id="threads"></g>
+    <!-- Porzellankörper -->
+    <path d="M 458 1005 L 458 1180 A 82 24.6 0 0 0 622 1180 L 622 1005 Z" fill="url(#porcelain)"/>
+    <path d="M 458 1005 L 458 1180 A 82 24.6 0 0 0 622 1180 L 622 1005 Z" fill="url(#age)"/>
+    <g clip-path="url(#bodyClip)"><g id="ribs" filter="url(#blurRib)"></g></g>
+    <rect x="492" y="1016" width="12" height="162" rx="6" fill="#fff" fill-opacity=".75" filter="url(#blur2)"/>
+    <rect x="496" y="1022" width="3" height="150" rx="1.5" fill="#fff" fill-opacity=".9"/>
+    <rect x="592" y="1020" width="5" height="150" rx="2.5" fill="#fff" fill-opacity=".14" filter="url(#blur2)"/>
+    <path d="M 461 1011 A 81 24 0 0 0 619 1011" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="3" filter="url(#blur1)"/>
+    <!-- Aufdruck -->
+    <text font-family="Outfit" font-weight="600" font-size="12.5" letter-spacing="1.6" fill="#2b2822" fill-opacity=".62">
+      <textPath href="#bandArc" startOffset="50%" text-anchor="middle">E 27 · 25 A · 500 V~</textPath>
+    </text>
+    <!-- Oberseite -->
+    <ellipse cx="540" cy="1005" rx="82" ry="24.6" fill="url(#porcelainTop)"/>
+    <ellipse cx="540" cy="1005" rx="82" ry="24.6" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/>
+    <ellipse cx="540" cy="1007" rx="60" ry="17.5" fill="none" stroke="#8d8676" stroke-opacity=".55" stroke-width="2"/>
+    <ellipse cx="540" cy="1005.5" rx="60" ry="17.5" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="1"/>
+    <!-- Schauglas mit Kennmelder -->
+    <ellipse cx="540" cy="1008" rx="31" ry="9.6" fill="#1c1a16"/>
+    <ellipse cx="540" cy="1009" rx="20" ry="6" fill="url(#indicator)"/>
+    <ellipse cx="540" cy="1008" rx="31" ry="9.6" fill="none" stroke="#5b554a" stroke-width="1.5"/>
+    <path d="M 518 1004 Q 530 999 546 1000" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="1.6" stroke-linecap="round"/>
+    <!-- Alterung -->
+    <path d="M 604 1026 L 598 1041 L 601 1052 L 594 1068" fill="none" stroke="#3b3326" stroke-opacity=".55" stroke-width="1" filter="url(#blur1)"/>
+    <path d="M 466 1172 q 6 -3 12 1" fill="none" stroke="#3b3326" stroke-opacity=".35" stroke-width="1.2"/>
+    <circle cx="489" cy="1112" r="1.3" fill="#4a3f2c" fill-opacity=".45"/>
+    <circle cx="571" cy="1141" r="1" fill="#4a3f2c" fill-opacity=".4"/>
+    <circle cx="512" cy="1060" r=".9" fill="#4a3f2c" fill-opacity=".35"/>
+  </g>
+
+  <!-- Glocke, Vorderseite -->
+  <g id="jar">
+    <path d="M 345 1318 L 345 920 A 195 135 0 0 1 735 920 L 735 1318 A 195 58 0 0 1 345 1318 Z" fill="url(#glass)"/>
+    <path d="M 345 1318 L 345 920 A 195 135 0 0 1 735 920 L 735 1318 A 195 58 0 0 1 345 1318 Z" fill="url(#glassV)"/>
+    <path d="M 345 1318 L 345 920 A 195 135 0 0 1 735 920 L 735 1318" fill="none" stroke="#fff" stroke-opacity=".26" stroke-width="1.6"/>
+    <path d="M 345 1318 A 195 58 0 0 0 735 1318" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="2"/>
+    <path d="M 347 1322 A 193 57 0 0 0 733 1322" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="5" filter="url(#blur2)"/>
+    <!-- Lichtkanten -->
+    <rect x="366" y="950" width="11" height="370" rx="5.5" fill="url(#streak)" filter="url(#blur2)"/>
+    <rect x="387" y="960" width="3" height="320" rx="1.5" fill="url(#streak)" opacity=".6"/>
+    <rect x="708" y="960" width="6" height="350" rx="3" fill="url(#streak)" opacity=".42" filter="url(#blur2)"/>
+    <!-- Kuppelreflex -->
+    <path d="M 374 889 A 172 118 0 0 1 454 818" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="7" stroke-linecap="round" filter="url(#blur2)"/>
+    <path d="M 510 804 A 172 118 0 0 1 570 804" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="4" stroke-linecap="round" filter="url(#blur2)"/>
+    <path d="M 644 817 A 182 126 0 0 1 705 867" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3" stroke-linecap="round" filter="url(#blur2)"/>
+    <!-- Knauf -->
+    <path d="M 526 787 Q 540 792 554 787 L 551 779 L 529 779 Z" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".25"/>
+    <circle cx="540" cy="760" r="22" fill="url(#knob)"/>
+    <circle cx="540" cy="760" r="22" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.2"/>
+    <ellipse cx="533" cy="751" rx="6.5" ry="4" fill="#fff" fill-opacity=".9" filter="url(#blur1)"/>
+  </g>
+
+  <rect width="1080" height="1920" fill="url(#vignette)"/>
+</svg>
+
+<svg class="grain" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer></filter>
+  <rect width="1080" height="1920" filter="url(#noise)"/>
+</svg>
+
+<div class="top">
+  <img src="logo-white.png" alt="TESHGE">
+  <div class="meta">Elektro-Ingenieurbetrieb Berlin</div>
+</div>
+
+<h1 class="headline">Gehört ins<br>Museum<span class="dot">.</span></h1>
+<div class="sub">Nicht in deinen Zählerschrank.</div>
+
+<div class="label">
+  <div class="inv"><i></i>Exponat Nr. 1958 · Schraubsicherung</div>
+  <h2>Bei dir noch in Betrieb?</h2>
+  <p>Wir planen und bauen deinen neuen Zählerschrank: TAB-konform, zum Festpreis, ohne Subunternehmer.</p>
+  <div class="row">
+    <div class="cta">Jetzt Anfrage stellen
+      <svg viewBox="0 0 24 24" fill="none" stroke="#040404" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </div>
+    <div class="link">teshge.de</div>
+  </div>
+</div>
+
+<div class="proof"><div class="stars"><svg viewBox="0 0 24 24"><path fill="#edad24" d="M12 2.6l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.8z"/></svg><svg viewBox="0 0 24 24"><path fill="#edad24" d="M12 2.6l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.8z"/></svg><svg viewBox="0 0 24 24"><path fill="#edad24" d="M12 2.6l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.8z"/></svg><svg viewBox="0 0 24 24"><path fill="#edad24" d="M12 2.6l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.8z"/></svg><svg viewBox="0 0 24 24"><path fill="#edad24" d="M12 2.6l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.8z"/></svg></div><span><b>4,9</b> aus 200+ Bewertungen · Innungsbetrieb</span></div>
+
+</div>
+
+<script>
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); return n; };
+
+  // Griffrillen am Porzellan, perspektivisch verteilt
+  const ribs = document.getElementById("ribs");
+  const cx = 540, rx = 82, ry = 24.6, ribTop = 1030, ribBot = 1128;
+  for (let deg = -72; deg <= 72; deg += 12) {
+    const t = deg * Math.PI / 180, x = cx + rx * Math.sin(t), dy = ry * Math.cos(t), f = Math.cos(t);
+    ribs.appendChild(el("line", { x1: x - 2.6 * f, y1: ribTop + dy, x2: x - 2.6 * f, y2: ribBot + dy, stroke: "#5a5347", "stroke-opacity": (.34 * f).toFixed(3), "stroke-width": (4.6 * f).toFixed(2), "stroke-linecap": "round" }));
+    ribs.appendChild(el("line", { x1: x + 2.4 * f, y1: ribTop + dy, x2: x + 2.4 * f, y2: ribBot + dy, stroke: "#fff", "stroke-opacity": (.55 * f * f).toFixed(3), "stroke-width": (2.6 * f).toFixed(2), "stroke-linecap": "round" }));
+  }
+  // Abschlusskanten der Rillenzone
+  [ribTop - 6, ribBot + 8].forEach((y, i) => {
+    ribs.appendChild(el("path", { d: `M ${cx - rx} ${y} A ${rx} ${ry} 0 0 0 ${cx + rx} ${y}`, fill: "none", stroke: i ? "#fff" : "#6d665a", "stroke-opacity": i ? .45 : .35, "stroke-width": 1.2 }));
+  });
+
+  // Gewindegänge als Helix
+  const threads = document.getElementById("threads");
+  const tcx = 540, trx = 55, tRy = 16.5, pitch = 12.5;
+  for (let k = 0; k < 6; k++) {
+    const y0 = 1250 - k * pitch;
+    let d = "", dh = "";
+    for (let s = 0; s <= 40; s++) {
+      const t = Math.PI * s / 40, x = tcx - trx * Math.cos(t), y = y0 + tRy * Math.sin(t) - (pitch / 2) * (s / 40);
+      d += (s ? " L " : "M ") + x.toFixed(2) + " " + y.toFixed(2);
+      dh += (s ? " L " : "M ") + x.toFixed(2) + " " + (y - 3.4).toFixed(2);
+    }
+    threads.appendChild(el("path", { d, fill: "none", stroke: "#15120d", "stroke-opacity": .6, "stroke-width": 3.4 }));
+    threads.appendChild(el("path", { d: dh, fill: "none", stroke: "#fff4dc", "stroke-opacity": .5, "stroke-width": 1.5 }));
+  }
+</script>
+</body>
+</html>
