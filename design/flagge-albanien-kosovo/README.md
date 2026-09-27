@@ -6,9 +6,9 @@ Konzeptentwurf, kein amtliches Hoheitszeichen.
 
 ## Idee
 
-Die albanische Flagge bleibt vollständig erhalten: rotes Feld, schwarzer Doppeladler, keine weiteren Farben.
-Neu ist nur der Sternenbogen aus der Flagge des Kosovo – sechs Sterne, schwarz statt weiß, im Bogen über den Köpfen des Adlers.
-Die Flagge bleibt damit auf den ersten Blick albanisch, der Bogen ist das eindeutige Kosovo-Zitat.
+Aufbau der Kosovo-Flagge, Farben und Wappentier Albaniens:
+die Landkarte des Kosovo in Schwarz auf rotem Feld, darin der albanische Doppeladler in Rot.
+Keine Sterne, keine weiteren Farben.
 
 ## Dateien
 
@@ -23,11 +23,12 @@ Die Flagge bleibt damit auf den ersten Blick albanisch, der Bogen ist das eindeu
 | Maß | Wert |
 |---|---|
 | Seitenverhältnis | 5 : 7 (wie Albanien) |
-| Adlerhöhe | 0,55 H, horizontal zentriert |
-| Adler-Oberkante | 0,31 H vom oberen Rand |
-| Sternenbogen | Radius R = H, Scheitel bei 0,18 H |
-| Sternabstand | 7° auf dem Bogen, symmetrisch zur Mittelachse |
-| Sternradius | 0,04 H (Außenradius), fünfzackig, Spitze nach oben |
+| Karte | Höhe 0,84 H, Begrenzungsrahmen mittig auf der Flagge |
+| Adler | Höhe 0,41 H, auf der Mittelachse, Mittelpunkt bei 0,54 H |
+| Mindestrand | Adler überall mindestens 0,014 H vom Kartenrand entfernt |
+
+Größe und Position des Adlers sind so gewählt, dass er vollständig innerhalb der Karte liegt
+und an keiner Stelle in das rote Feld übergeht.
 
 ## Farben
 
@@ -38,10 +39,10 @@ Die Flagge bleibt damit auf den ersten Blick albanisch, der Bogen ist das eindeu
 
 ## Symbolik
 
-- **Rot und Doppeladler** – Albanien, unverändert übernommen
-- **Sechs Sterne im Bogen** – Zitat der Flagge des Kosovo
-- **Zwei Köpfe, ein Körper** – zwei Staaten, ein Volk
+- **Rot und Doppeladler** – Albanien, Farben und Wappentier
+- **Landkarte** – Kosovo, Hauptmotiv seiner Flagge
+- **Adler in der Karte** – beide Flaggen in einem Zeichen
 
 ## Quellen
 
-Adler-Vektor aus [flag-icons](https://github.com/lipis/flag-icons) (MIT-Lizenz).
+Adler- und Kartenvektor aus [flag-icons](https://github.com/lipis/flag-icons) (MIT-Lizenz).
