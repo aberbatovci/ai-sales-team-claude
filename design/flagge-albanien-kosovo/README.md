@@ -6,15 +6,15 @@ Konzeptentwurf, kein amtliches Hoheitszeichen.
 
 ## Idee
 
-Aufbau der Kosovo-Flagge, Farben und Wappentier Albaniens:
-die Landkarte des Kosovo in Schwarz auf rotem Feld, darin der albanische Doppeladler in Rot.
-Keine Sterne, keine weiteren Farben.
+Zwei rote Felder, dazwischen ein schwarzes Band, darüber der albanische Doppeladler im Farbwechsel:
+auf dem Band rot, auf den roten Feldern schwarz. Die Flagge ist vollständig spiegelsymmetrisch
+und nutzt nur die beiden Farben Albaniens.
 
 ## Dateien
 
 | Datei | Zweck |
 |---|---|
-| `flagge.svg` | Vektor-Master, beliebig skalierbar (Druck, Fahnenherstellung) |
+| `flagge.svg` | Vektor-Master aus genau zwei Flächen (rotes Feld, schwarze Form) – druck- und fahnentauglich |
 | `flagge.png` | 2800 × 2000 px |
 | `spezifikation.png` | Präsentationsblatt mit Konstruktion, Farben, Symbolik, Fernwirkung |
 
@@ -23,12 +23,12 @@ Keine Sterne, keine weiteren Farben.
 | Maß | Wert |
 |---|---|
 | Seitenverhältnis | 5 : 7 (wie Albanien) |
-| Karte | Höhe 0,84 H, Begrenzungsrahmen mittig auf der Flagge |
-| Adler | Höhe 0,41 H, auf der Mittelachse, Mittelpunkt bei 0,54 H |
-| Mindestrand | Adler überall mindestens 0,014 H vom Kartenrand entfernt |
+| Senkrechte Streifen | Rot – Schwarz – Rot im Verhältnis 3 : 2 : 3 |
+| Adler | Höhe ≈ 0,64 H, zentriert auf beiden Achsen |
+| Farbwechsel | Die Flügelansätze des Adlers liegen exakt auf den Streifenkanten |
 
-Größe und Position des Adlers sind so gewählt, dass er vollständig innerhalb der Karte liegt
-und an keiner Stelle in das rote Feld übergeht.
+Der Farbwechsel ist als echte Vektorgeometrie ausgeführt (schwarze Fläche = Band XOR Adler),
+nicht über Masken oder Clipping. Dadurch entstehen an den Kanten keine Haarlinien, egal in welcher Größe.
 
 ## Farben
 
@@ -39,10 +39,10 @@ und an keiner Stelle in das rote Feld übergeht.
 
 ## Symbolik
 
-- **Rot und Doppeladler** – Albanien, Farben und Wappentier
-- **Landkarte** – Kosovo, Hauptmotiv seiner Flagge
-- **Adler in der Karte** – beide Flaggen in einem Zeichen
+- **Zwei rote Felder** – Albanien und Kosovo
+- **Schwarzes Band** – was beide verbindet
+- **Ein Adler** – ein Körper, je ein Flügel über jedem Feld
 
 ## Quellen
 
-Adler- und Kartenvektor aus [flag-icons](https://github.com/lipis/flag-icons) (MIT-Lizenz).
+Adler-Vektor aus [flag-icons](https://github.com/lipis/flag-icons) (MIT-Lizenz).
